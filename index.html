@@ -91,11 +91,33 @@ iframe {
 </audio>
 
 <script>
-window.addEventListener("click", () => {
-  const music = document.getElementById("music");
+const music = document.getElementById("music");
+
+// try autoplay silently
+music.play().catch(() => {});
+
+function startMusic() {
   music.muted = false;
-  music.play();
-});
+  music.volume = 0;
+
+  music.play().then(() => {
+    let fade = setInterval(() => {
+      if (music.volume < 0.3) {
+        music.volume += 0.02;
+      } else {
+        clearInterval(fade);
+      }
+    }, 200);
+  });
+
+  window.removeEventListener("scroll", startMusic);
+}
+
+// trigger on scroll
+window.addEventListener("scroll", startMusic);
+
+// ALSO trigger on touch (for mobile safety)
+window.addEventListener("touchstart", startMusic);
 </script>
 
 <!-- ✨ PARTICLES -->
