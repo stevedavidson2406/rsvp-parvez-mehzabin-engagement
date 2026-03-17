@@ -146,8 +146,7 @@ as they embark on their journey of love and forever
 <iframe src="https://maps.google.com/maps?q=RK9%20Villa%20and%20Resort&t=&z=15&ie=UTF8&iwloc=&output=embed"></iframe>
 
 <div class="box">
-<form action="https://docs.google.com/forms/d/e/1FAIpQLSdb3OiwxA4AonvLqZ7FmFktpQPoI0D1DZlnYiCaJ_eky5L3jg/formResponse" method="POST" target="hidden_iframe">
-
+<form id="rsvpForm" action="https://docs.google.com/forms/d/e/1FAIpQLSdb3OiwxA4AonvLqZ7FmFktpQPoI0D1DZlnYiCaJ_eky5L3jg/formResponse" method="POST" target="hidden_iframe">
 <label>Name *</label>
 <input type="text" name="entry.1595813428" required>
 
@@ -158,7 +157,7 @@ as they embark on their journey of love and forever
 <option value="Regretfully Decline">Regretfully Decline</option>
 </select>
 
-<button class="main-btn">SEND RSVP</button>
+<button id="submitBtn" class="main-btn">SEND RSVP</button>
 </form>
 
 <iframe name="hidden_iframe" style="display:none;"></iframe>
@@ -191,6 +190,24 @@ for (let i = 0; i < 25; i++) {
   document.body.appendChild(p);
 }
 </script>
+<script>
+const form = document.getElementById("rsvpForm");
+const button = document.getElementById("submitBtn");
 
+form.addEventListener("submit", function () {
+  // change text
+  button.innerText = "Sending...";
+  
+  // disable button immediately
+  button.disabled = true;
+  button.style.opacity = "0.6";
+
+  // after submission
+  setTimeout(() => {
+    button.innerText = "Response Submitted ✓";
+    button.style.background = "#4CAF50";
+  }, 1500);
+});
+</script>
 </body>
 </html>
