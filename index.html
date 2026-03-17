@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>RSVP for Parvez & Mehzabin's Engagement</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Tangerine:wght@700&family=Cormorant+Garamond:wght@300;400&display=swap" rel="stylesheet">
+
+<style>
+body {
+  margin: 0;
+  font-family: 'Cormorant Garamond', serif;
+  background: #f5f3ef;
+  color: #1a1a1a;
+  text-align: center;
+  overflow-x: hidden;
+}
+
+h1 {
+  font-family: 'Tangerine', cursive;
+  font-size: 80px;
+  color: #c4a974;
+  margin: 10px 0;
+}
+
+.gold { color: #c4a974; }
+
+.container {
+  max-width: 700px;
+  margin: auto;
+  padding: 40px 20px;
+}
+
+.box {
+  border: 1px solid rgba(196,169,116,0.3);
+  padding: 30px;
+  margin: 40px 0;
+  background: rgba(196,169,116,0.05);
+}
+
+input, select {
+  width: 100%;
+  padding: 12px;
+  margin-top: 8px;
+  margin-bottom: 20px;
+  border: 1px solid rgba(196,169,116,0.4);
+  background: transparent;
+}
+
+button {
+  background: #c4a974;
+  color: white;
+  border: none;
+  padding: 14px;
+  width: 100%;
+  letter-spacing: 2px;
+}
+
+iframe {
+  width: 100%;
+  height: 300px;
+  border: none;
+  margin-top: 20px;
+}
+
+/* particles */
+.particle {
+  position: fixed;
+  width: 6px;
+  height: 6px;
+  background: #c4a974;
+  border-radius: 50%;
+  opacity: 0.5;
+  animation: float 10s infinite linear;
+}
+
+@keyframes float {
+  from { transform: translateY(100vh); }
+  to { transform: translateY(-10vh); }
+}
+</style>
+</head>
+
+<body>
+
+<!-- 🎶 MUSIC -->
+<audio id="music" autoplay loop muted>
+  <source src="music.mp3" type="audio/mp3">
+</audio>
+
+<script>
+window.addEventListener("click", () => {
+  const music = document.getElementById("music");
+  music.muted = false;
+  music.play();
+});
+</script>
+
+<!-- ✨ PARTICLES -->
+<script>
+for (let i = 0; i < 25; i++) {
+  let p = document.createElement("div");
+  p.className = "particle";
+  p.style.left = Math.random() * 100 + "vw";
+  p.style.animationDuration = (5 + Math.random()*10) + "s";
+  document.body.appendChild(p);
+}
+</script>
+
+<div class="container">
+
+<p class="gold">Together with their families,</p>
+
+<p>
+request the honour of your gracious presence<br>
+to celebrate a beautiful beginning of
+</p>
+
+<h1>Parvez & Mehzabin</h1>
+
+<p>
+as they embark on their journey of love and forever
+</p>
+
+<div class="box">
+  <h2 class="gold">Saturday, April 11th, 2026</h2>
+  <p>4:00 PM – 10:00 PM</p>
+  <p><b>RK9 Villa and Resort</b><br>Bilwaradahalli, 560083</p>
+</div>
+
+<!-- 📍 MAP -->
+<iframe src="https://maps.google.com/maps?q=RK9%20Villa%20and%20Resort&t=&z=15&ie=UTF8&iwloc=&output=embed"></iframe>
+
+<!-- 📝 FORM -->
+<div class="box">
+<form action="https://docs.google.com/forms/d/e/1FAIpQLSdb3OiwxA4AonvLqZ7FmFktpQPoI0D1DZlnYiCaJ_eky5L3jg/formResponse" method="POST" target="hidden_iframe" onsubmit="submitted=true;">
+
+<label>Full Name *</label>
+<input type="text" name="entry.1595813428" required>
+
+<label>Will you attend? *</label>
+<select name="entry.1117028700" required>
+<option value="">Select an option</option>
+<option value="Joyfully Accept">Joyfully Accept</option>
+<option value="Regretfully Decline">Regretfully Decline</option>
+</select>
+
+<button type="submit">SEND RSVP</button>
+
+</form>
+
+<iframe name="hidden_iframe" style="display:none;"></iframe>
+
+<p id="success" style="display:none; color:green;">Thank you! Your response is recorded.</p>
+</div>
+
+</div>
+
+<script>
+var submitted = false;
+document.querySelector("form").addEventListener("submit", function() {
+  setTimeout(() => {
+    document.getElementById("success").style.display = "block";
+  }, 1000);
+});
+</script>
+
+</body>
+</html>
